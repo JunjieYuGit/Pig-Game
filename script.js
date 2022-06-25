@@ -12,7 +12,7 @@ const btnHold = document.querySelector('.btn--hold');
 const current0EL = document.getElementById('current--0');
 const current1EL = document.getElementById('current--1');
 
-const scores = [0, 0];
+let scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 let playing = true;
@@ -65,7 +65,7 @@ btnHold.addEventListener('click', function () {
     //2. check score is >= 100
     //finish the game
 
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 20) {
       playing = false;
       document
         .querySelector(`.player--${activePlayer}`)
@@ -80,4 +80,22 @@ btnHold.addEventListener('click', function () {
 
     // Stop the game when finish the game
   }
+});
+
+btnNew.addEventListener('click', function () {
+  //reset all of the points and current point
+  playing = true;
+  currentScore = 0;
+  scores = [0, 0];
+  activePlayer = 0;
+  current0EL.textContent = currentScore;
+  current1EL.textContent = currentScore;
+  score0EL.textContent = 0;
+  score1EL.textContent = 0;
+  diceEL.classList.add('hidden');
+  player0EL.classList.remove('player--winner');
+  player1EL.classList.remove('player--winner');
+  player0EL.classList.add('player--active');
+  player1EL.classList.remove('player--active');
+  // reset active, player-winner
 });
