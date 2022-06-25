@@ -12,6 +12,6 @@ The first player which the sum of the current point and score equal to or more t
 I add my own rule on the Game 
 ----------------------------------------
 when player stack to current points equal or more than 45 then hold, player will get extra bonus 5 points on socres. <br />
-High Risk High Return!!
+However, that will be more chance to get dice number **1**
 
 Have Fun!!
