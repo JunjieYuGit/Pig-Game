@@ -42,8 +42,6 @@ const switchPlayer = function () {
 
 //staring conditions
 
-score0EL.textContent = 0;
-score1EL.textContent = 0;
 diceEL.classList.add('hidden');
 
 // Rolling dice dunctionality
@@ -71,29 +69,33 @@ btnRoll.addEventListener('click', function () {
 });
 
 btnHold.addEventListener('click', function () {
-  if (playing) {
-    //1. Add current scroe to player
+  if (playing && currentScore < 45) {
+    // Add me own rule!!
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
-
-    //2. check score is >= 100
-    //finish the game
-
-    if (scores[activePlayer] >= 100) {
-      playing = false;
-      document
-        .querySelector(`.player--${activePlayer}`)
-        .classList.add('player--winner');
-      document
-        .querySelector(`.player--${activePlayer}`)
-        .classList.remove('player--active');
-      diceEL.classList.add('hidden');
-    } else {
-      switchPlayer();
-    }
-
-    // Stop the game when finish the game
+  } else if (playing && currentScore >= 45) {
+    scores[activePlayer] += currentScore + 5;
+    console.log(scores[activePlayer]);
+    document.getElementById(`score--${activePlayer}`).textContent =
+      scores[activePlayer];
+  } else {
+    switchPlayer();
+  }
+  //2. check score is >= 100
+  //finish the game
+  // Stop the game when finish the game
+  if (scores[activePlayer] >= 100) {
+    playing = false;
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add('player--winner');
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove('player--active');
+    diceEL.classList.add('hidden');
+  } else {
+    switchPlayer();
   }
 });
 
